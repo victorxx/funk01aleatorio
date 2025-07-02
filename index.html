@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -22,6 +23,10 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -184,25 +189,73 @@
         display: none;
       }
     }
+
+    /* Estilos para o conteúdo único randomizado */
+    #uniqueContent {
+      font-family: monospace;
+      background-color: #1a1a1a;
+      color: #ff00cc;
+      padding: 15px;
+      margin: 40px auto;
+      max-width: 600px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #ff66cc;
+      user-select: none;
+      white-space: pre-wrap;
+      text-align: center;
+      font-weight: bold;
+      letter-spacing: 2px;
+      min-height: 120px;
+    }
+
+    /* Estilos para a seção de notícias */
+    #newsSection {
+      margin: 40px 200px;
+      color: #ff66cc;
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #ff00cc;
+      font-family: Arial, sans-serif;
+    }
+    #newsSection h2 {
+      color: #ff00cc;
+      margin-bottom: 20px;
+      text-shadow: 0 0 6px #ff00cc;
+    }
+    #newsList {
+      list-style: none;
+      padding-left: 0;
+    }
+    #newsList li {
+      margin-bottom: 15px;
+    }
+    #newsList a {
+      color: #ff66cc;
+      text-decoration: none;
+    }
+    #newsList a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
 
   <!-- Banner topo propaganda -->
   <div class="ad-banner" id="adBanner">
-    <span class="close-btn" onclick="document.getElementById('adBanner').style.display='none'">&times;</span>
+    <span class="close-btn" role="button" aria-label="Fechar anúncio" tabindex="0" onclick="document.getElementById('adBanner').style.display='none'">&times;</span>
     <a href="#" target="_blank" id="adLinkTop" title="Promoções Funk Brasil">OFERTAS EXCLUSIVAS - Clique aqui!</a>
   </div>
 
   <!-- Banner lateral esquerdo -->
   <div class="side-ad left" id="adLeft">
-    <span class="close-btn" onclick="document.getElementById('adLeft').style.display='none'">&times;</span>
+    <span class="close-btn" role="button" aria-label="Fechar anúncio" tabindex="0" onclick="document.getElementById('adLeft').style.display='none'">&times;</span>
     <a href="#" target="_blank" id="adLinkLeft" title="Promoções Funk Brasil">Clique e confira!</a>
   </div>
 
   <!-- Banner lateral direito -->
   <div class="side-ad right" id="adRight">
-    <span class="close-btn" onclick="document.getElementById('adRight').style.display='none'">&times;</span>
+    <span class="close-btn" role="button" aria-label="Fechar anúncio" tabindex="0" onclick="document.getElementById('adRight').style.display='none'">&times;</span>
     <a href="#" target="_blank" id="adLinkRight" title="Promoções Funk Brasil">Confira as novidades!</a>
   </div>
 
@@ -214,45 +267,44 @@
   <main>
     <div class="video-title" id="videoTitle">Carregando vídeo...</div>
     <div class="video-container">
-      <iframe id="videoFrame" allowfullscreen></iframe>
+      <iframe id="videoFrame" allowfullscreen title="Vídeo de funk brasileiro"></iframe>
     </div>
   </main>
-  <section id="newsSection" style="
-  margin: 40px 200px;
-  color: #ff66cc;
-  background-color: #1a1a1a;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px #ff00cc;
-  font-family: Arial, sans-serif;
-">
-  <h2 style="color: #ff00cc; margin-bottom: 20px; text-shadow: 0 0 6px #ff00cc;">Últimas Notícias</h2>
-  <ul id="newsList" style="list-style: none; padding-left: 0;"></ul>
-</section>
 
+  <section id="newsSection">
+    <h2>Últimas Notícias</h2>
+    <ul id="newsList"></ul>
+  </section>
+
+  <div id="uniqueContent">Carregando conteúdo único...</div>
 
   <footer>
     &copy; Funk News Brasil - Todos os direitos reservados.
   </footer>
 
   <script>
-    // Lista de vídeos e títulos
+    // Lista de vídeos e títulos e parâmetros adicionais
     const videoIDs = [
-      "CYdsPArPUOI", 
+      "CYdsPArPUOI",
+      "HNN-lCCYYNo"
+    ];
 
+    const videoParams = [
+      "list=PLh2Z8mqUq5mktVKcBMLpxVp0lIeZ1zLOq",
+      ""
     ];
 
     const videoTitles = [
       "FUNK É LIXO MUSICAL!",
-
+      "Bonde da Stronda feat. Mr Catra - Mansão Thug Stronda (Videoclipe Oficial)"
     ];
 
     // Lista de anúncios (mesmo estilo, pode editar os links e textos)
     const ads = [
       {url:"https://wa.me/5527999497001", texto:"SEGURO DE CARRO E CONSÓRCIOS"},
-      {url:"https://www.espiritosanto-es.com.br/vodka/",texto:'temos vodka confira'},
-      {url:"https://filmeseserie.com.br/vodka/",texto:'Temos vodka confira'},
-      {url:"https://ocomerciobrasileironoticia.blogspot.com/2025/05/erp-profissional-para-empresas.html",texto:'ERP PROFISSIONAL'},
+      {url:"https://www.espiritosanto-es.com.br/vodka/", texto:'Temos vodka confira'},
+      {url:"https://filmeseserie.com.br/vodka/", texto:'Temos vodka confira'},
+      {url:"https://ocomerciobrasileironoticia.blogspot.com/2025/05/erp-profissional-para-empresas.html", texto:'ERP PROFISSIONAL'},
       {url:"https://hostinger.com.br?REFERRALCODE=SSNVICTORXU8", texto:"🔥 Economize com Hostinger!"},
       {url:"https://geocredibnkvitoria.com/", texto:"💰 Crédito rápido disponível"},
       {url:"https://central.dokehost.com.br/aff.php?aff=90", texto:"📈 VPS AS MELHORES MÁQUINAS"},
@@ -260,130 +312,87 @@
       {url:"https://www.youtube.com/@gamenewsbrasil", texto:"🎮 Fique ligado em Game News!"}
     ];
 
+    // Dados de notícias
+    const newsData = [
+      {
+        title: "MC Kevin o Chris lança novo hit!",
+        date: "01/07/2025",
+        link: "https://funkbrasil.com/noticia1"
+      },
+      {
+        title: "Baile funk com segurança reforçada no Rio de Janeiro",
+        date: "30/06/2025",
+        link: "https://funkbrasil.com/noticia2"
+      },
+      {
+        title: "Cresce a popularidade do funk nas plataformas digitais",
+        date: "28/06/2025",
+        link: "https://funkbrasil.com/noticia3"
+      }
+    ];
+
+    // Função para carregar notícias
+    function loadNews() {
+      const newsList = document.getElementById("newsList");
+      newsList.innerHTML = ""; // limpa antes de popular
+
+      newsData.forEach(news => {
+        const li = document.createElement("li");
+
+        const a = document.createElement("a");
+        a.href = news.link;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.textContent = `${news.title} (${news.date})`;
+
+        li.appendChild(a);
+        newsList.appendChild(li);
+      });
+    }
+
+    // Função para atualizar anúncio em cada banner
+    function updateAd(bannerId, linkId) {
+      const banner = document.getElementById(bannerId);
+      const link = document.getElementById(linkId);
+      const adIndex = Math.floor(Math.random() * ads.length);
+      link.href = ads[adIndex].url;
+      link.textContent = ads[adIndex].texto;
+      link.title = ads[adIndex].texto;
+      link.rel = "noopener noreferrer";
+    }
+
+    // Função para gerar string aleatória
+    function generateRandomString(length = 500) {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?/\\~`´^°ªº§';
+      let result = '';
+      for (let i = 0; i < length; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return result;
+    }
+
+    // Inicialização da página
     document.addEventListener("DOMContentLoaded", () => {
-      // Carregar vídeo aleatório
+      // Vídeo aleatório
       const index = Math.floor(Math.random() * videoIDs.length);
       const videoFrame = document.getElementById("videoFrame");
       const videoTitle = document.getElementById("videoTitle");
 
-      videoFrame.src = `https://www.youtube.com/embed/${videoIDs[index]}?rel=0&autoplay=1&mute=1`;
+      videoFrame.src = `https://www.youtube.com/embed/${videoIDs[index]}?rel=0&autoplay=1&mute=1&${videoParams[index]}`;
       videoTitle.textContent = videoTitles[index];
 
-      // Função para atualizar anúncio em cada banner
-      function updateAd(bannerId, linkId) {
-        const banner = document.getElementById(bannerId);
-        const link = document.getElementById(linkId);
-        const adIndex = Math.floor(Math.random() * ads.length);
-        link.href = ads[adIndex].url;
-        link.textContent = ads[adIndex].texto;
-        link.title = ads[adIndex].texto;
-      }
-
-      // Atualiza todos os banners na inicialização
+      // Atualiza os anúncios dos banners
       updateAd("adBanner", "adLinkTop");
       updateAd("adLeft", "adLinkLeft");
       updateAd("adRight", "adLinkRight");
 
-      // Atualiza banners a cada 10 segundos
-      setInterval(() => {
-        updateAd("adBanner", "adLinkTop");
-        updateAd("adLeft", "adLinkLeft");
-        updateAd("adRight", "adLinkRight");
-      }, 10000);
+      // Carrega notícias
+      loadNews();
+
+      // Conteúdo único randomizado
+      const uniqueContent = document.getElementById("uniqueContent");
+      uniqueContent.textContent = generateRandomString(500);
     });
   </script>
-  <!--------------RANDOMICO-->
-  <div id="uniqueContent" style="
-  font-family: monospace;
-  background-color: #1a1a1a;
-  color: #ff00cc;
-  padding: 15px;
-  margin: 40px auto;
-  max-width: 600px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px #ff66cc;
-  user-select: none;
-  white-space: pre-wrap;
-  text-align: center;
-  font-weight: bold;
-  letter-spacing: 2px;
-  min-height: 120px;
-">
-  Carregando conteúdo único...
-</div>
-<!--------------RANDOMICO-->
-<script>
-  function generateRandomString(length = 500) {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?/\\~`´^°ªº§';
-    let result = '';
-    for (let i = 0; i < length; i++) {
-      result += chars.charAt(Math.floor(Math.random() * chars.length));
-      // Opcional: adiciona quebras de linha a cada 60 caracteres para melhor visualização
-      if ((i + 1) % 60 === 0) result += '\n';
-    }
-    return result;
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const div = document.getElementById('uniqueContent');
-    div.textContent = generateRandomString(500);
-  });
-</script>
-<!--------------RANDOMICO-->
-
-
-
-
-
-
-<!-----------------adicionandonoticiasna pagina-->
-<script>
-  const newsData = [
-  {
-    title: "MC Kevin o Chris lança novo hit!",
-    date: "01/07/2025",
-    link: "https://funkbrasil.com/noticia1"
-  },
-  {
-    title: "Baile funk com segurança reforçada no Rio de Janeiro",
-    date: "30/06/2025",
-    link: "https://funkbrasil.com/noticia2"
-  },
-  {
-    title: "Cresce a popularidade do funk nas plataformas digitais",
-    date: "28/06/2025",
-    link: "https://funkbrasil.com/noticia3"
-  }
-];
-
-function loadNews() {
-  const newsList = document.getElementById("newsList");
-  newsList.innerHTML = ""; // limpa antes de popular
-
-  newsData.forEach(news => {
-    const li = document.createElement("li");
-    li.style.marginBottom = "15px";
-    
-    const a = document.createElement("a");
-    a.href = news.link;
-    a.target = "_blank";
-    a.style.color = "#ff66cc";
-    a.style.textDecoration = "none";
-    a.textContent = `${news.title} (${news.date})`;
-    
-    a.addEventListener("mouseover", () => a.style.textDecoration = "underline");
-    a.addEventListener("mouseout", () => a.style.textDecoration = "none");
-
-    li.appendChild(a);
-    newsList.appendChild(li);
-  });
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  loadNews();
-});
-
-</script>
-<!-----------------adicionandonoticiasna pagina-->
 </body>
 </html>

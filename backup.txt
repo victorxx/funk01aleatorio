@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Os melhores vídeos e conteúdo do funk para animar seu dia! Curta o ritmo, os bailes e o humor do funk brasileiro." />
+  <meta name="keywords" content="funk, funk brasileiro, baile funk, música, dança, vídeos de funk, cultura funk, DJ, MC" />
+  <meta name="author" content="Equipe Funk News" />
+
+  <meta property="og:title" content="Funk Brasileiro: Vídeos e Cultura" />
+  <meta property="og:description" content="Assista aos vídeos mais irados de funk e fique por dentro do mundo do baile funk!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://seudominio.com/funk" />
+  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Brazilian_Funk_Dancer.jpg/1200px-Brazilian_Funk_Dancer.jpg" />
+  <meta name="robots" content="index, follow" />
+
+  <title>Funk Brasileiro - Vídeos, Cultura e Dança</title>
+
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Arial Black', Arial, sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Banner fixo topo com propaganda */
+    .ad-banner {
+      background-color: #ff00cc;
+      color: white;
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 20px;
+      font-weight: 900;
+      animation: blink 1.5s infinite;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      box-shadow: 0 0 15px #ff66cc;
+      user-select: none;
+    }
+
+    /* Banners laterais fixos */
+    .side-ad {
+      background-color: #ff00cc;
+      color: white;
+      width: 180px;
+      padding: 15px 10px;
+      font-size: 18px;
+      font-weight: 900;
+      animation: blink 1.5s infinite;
+      position: fixed;
+      top: 60px; /* abaixo do banner topo */
+      bottom: 60px; /* acima do footer */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 0 15px #ff66cc;
+      user-select: none;
+      z-index: 9999;
+      word-break: break-word;
+    }
+    .side-ad.left {
+      left: 0;
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+    }
+    .side-ad.right {
+      right: 0;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .ad-banner a,
+    .side-ad a {
+      color: white;
+      text-decoration: none;
+      font-weight: 900;
+      user-select: text;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      font-size: 24px;
+      font-weight: 900;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Close btn lateral precisa ficar dentro do container */
+    .side-ad .close-btn {
+      top: 5px;
+      right: 5px;
+    }
+
+    /* Espaço para os banners laterais e topo */
+    header {
+      margin: 80px 200px 0 200px; /* topo 80px para banner topo + 200px lado para banner lateral */
+      padding: 25px 0;
+      text-align: center;
+      border-bottom: 3px solid #ff00cc;
+      text-shadow: 0 0 10px #ff00cc;
+    }
+    header h1 {
+      font-size: 3rem;
+      color: #ff00cc;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.5rem;
+      color: #ff66cc;
+    }
+
+    main {
+      margin: 40px 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .video-container {
+      width: 100%;
+      max-width: 800px;
+      box-shadow: 0 0 30px #ff00cc;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    iframe {
+      width: 100%;
+      height: 450px;
+      border: none;
+    }
+
+    .video-title {
+      color: #ff00cc;
+      font-weight: 900;
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 15px;
+      text-shadow: 0 0 6px #ff00cc;
+    }
+
+    footer {
+      margin: 0 200px 40px 200px;
+      padding: 15px 0;
+      text-align: center;
+      border-top: 3px solid #ff00cc;
+      color: #ff66cc;
+      font-weight: bold;
+      text-shadow: 0 0 10px #ff00cc;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Responsividade */
+    @media(max-width: 900px) {
+      header, main, footer {
+        margin: 80px 20px 20px 20px; /* adapta para o banner no topo */
+      }
+      iframe {
+        height: 300px;
+      }
+      /* Ocultar banners laterais em telas pequenas */
+      .side-ad {
+        display: none;
+      }
+    }
+
+    /* Estilos para o conteúdo único randomizado */
+    #uniqueContent {
+      font-family: monospace;
+      background-color: #1a1a1a;
+      color: #ff00cc;
+      padding: 15px;
+      margin: 40px auto;
+      max-width: 600px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #ff66cc;
+      user-select: none;
+      white-space: pre-wrap;
+      text-align: center;
+      font-weight: bold;
+      letter-spacing: 2px;
+      min-height: 120px;
+    }
+
+    /* Estilos para a seção de notícias */
+    #newsSection {
+      margin: 40px 200px;
+      color: #ff66cc;
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #ff00cc;
+      font-family: Arial, sans-serif;
+    }
+    #newsSection h2 {
+      color: #ff00cc;
+      margin-bottom: 20px;
+      text-shadow: 0 0 6px #ff00cc;
+    }
+    #newsList {
+      list-style: none;
+      padding-left: 0;
+    }
+    #newsList li {
+      margin-bottom: 15px;
+    }
+    #newsList a {
+      color: #ff66cc;
+      text-decoration: none;
+    }
+    #newsList a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banner topo propaganda -->
+  <div class="ad-banner" id="adBanner">
+    <span class="close-btn" role="button" aria-label="Fechar anúncio" tabindex="0" onclick="document.getElementById('adBanner').style.display='none'">&times;</span>
+    <a href="#" target="_blank" id="adLinkTop" title="Promoções Funk Brasil">OFERTAS EXCLUSIVAS - Clique aqui!</a>
+  </div>
+
+  <!-- Banner lateral esquerdo -->
+  <div class="side-ad left" id="adLeft">
+    <span class="close-btn" role="button" aria-label="Fechar anúncio" tabindex="0" onclick="document.getElementById('adLeft').style.display='none'">&times;</span>
+    <a href="#" target="_blank" id="adLinkLeft" title="Promoções Funk Brasil">Clique e confira!</a>
+  </div>
+
+  <!-- Banner lateral direito -->
+  <div class="side-ad right" id="adRight">
+    <span class="close-btn" role="button" aria-label="Fechar anúncio" tabindex="0" onclick="document.getElementById('adRight').style.display='none'">&times;</span>
+    <a href="#" target="_blank" id="adLinkRight" title="Promoções Funk Brasil">Confira as novidades!</a>
+  </div>
+
+  <header>
+    <h1>Funk Brasileiro</h1>
+    <p>Os melhores vídeos, cultura e ritmo do baile funk</p>
+  </header>
+
+  <main>
+    <div class="video-title" id="videoTitle">Carregando vídeo...</div>
+    <div class="video-container">
+      <iframe id="videoFrame" allowfullscreen title="Vídeo de funk brasileiro"></iframe>
+    </div>
+  </main>
+
+  <section id="newsSection">
+    <h2>Últimas Notícias</h2>
+    <ul id="newsList"></ul>
+  </section>
+
+  <div id="uniqueContent">Carregando conteúdo único...</div>
+
+  <footer>
+    &copy; Funk News Brasil - Todos os direitos reservados.
+  </footer>
+
+  <script>
+    // Lista de vídeos e títulos e parâmetros adicionais
+    const videoIDs = [
+      "CYdsPArPUOI",
+      "HNN-lCCYYNo"
+    ];
+
+    const videoParams = [
+      "list=PLh2Z8mqUq5mktVKcBMLpxVp0lIeZ1zLOq",
+      ""
+    ];
+
+    const videoTitles = [
+      "FUNK É LIXO MUSICAL!",
+      "Bonde da Stronda feat. Mr Catra - Mansão Thug Stronda (Videoclipe Oficial)"
+    ];
+
+    // Lista de anúncios (mesmo estilo, pode editar os links e textos)
+    const ads = [
+      {url:"https://wa.me/5527999497001", texto:"SEGURO DE CARRO E CONSÓRCIOS"},
+      {url:"https://www.espiritosanto-es.com.br/vodka/", texto:'Temos vodka confira'},
+      {url:"https://filmeseserie.com.br/vodka/", texto:'Temos vodka confira'},
+      {url:"https://ocomerciobrasileironoticia.blogspot.com/2025/05/erp-profissional-para-empresas.html", texto:'ERP PROFISSIONAL'},
+      {url:"https://hostinger.com.br?REFERRALCODE=SSNVICTORXU8", texto:"🔥 Economize com Hostinger!"},
+      {url:"https://geocredibnkvitoria.com/", texto:"💰 Crédito rápido disponível"},
+      {url:"https://central.dokehost.com.br/aff.php?aff=90", texto:"📈 VPS AS MELHORES MÁQUINAS"},
+      {url:"https://creditopessoal.vercel.app/", texto:"📈 Simule seu crédito pessoal"},
+      {url:"https://www.youtube.com/@gamenewsbrasil", texto:"🎮 Fique ligado em Game News!"}
+    ];
+
+    // Dados de notícias
+    const newsData = [
+      {
+        title: "MC Kevin o Chris lança novo hit!",
+        date: "01/07/2025",
+        link: "https://funkbrasil.com/noticia1"
+      },
+      {
+        title: "Baile funk com segurança reforçada no Rio de Janeiro",
+        date: "30/06/2025",
+        link: "https://funkbrasil.com/noticia2"
+      },
+      {
+        title: "Cresce a popularidade do funk nas plataformas digitais",
+        date: "28/06/2025",
+        link: "https://funkbrasil.com/noticia3"
+      }
+    ];
+
+    // Função para carregar notícias
+    function loadNews() {
+      const newsList = document.getElementById("newsList");
+      newsList.innerHTML = ""; // limpa antes de popular
+
+      newsData.forEach(news => {
+        const li = document.createElement("li");
+
+        const a = document.createElement("a");
+        a.href = news.link;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.textContent = `${news.title} (${news.date})`;
+
+        li.appendChild(a);
+        newsList.appendChild(li);
+      });
+    }
+
+    // Função para atualizar anúncio em cada banner
+    function updateAd(bannerId, linkId) {
+      const banner = document.getElementById(bannerId);
+      const link = document.getElementById(linkId);
+      const adIndex = Math.floor(Math.random() * ads.length);
+      link.href = ads[adIndex].url;
+      link.textContent = ads[adIndex].texto;
+      link.title = ads[adIndex].texto;
+      link.rel = "noopener noreferrer";
+    }
+
+    // Função para gerar string aleatória
+    function generateRandomString(length = 500) {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?/\\~`´^°ªº§';
+      let result = '';
+      for (let i = 0; i < length; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return result;
+    }
+
+    // Inicialização da página
+    document.addEventListener("DOMContentLoaded", () => {
+      // Vídeo aleatório
+      const index = Math.floor(Math.random() * videoIDs.length);
+      const videoFrame = document.getElementById("videoFrame");
+      const videoTitle = document.getElementById("videoTitle");
+
+      videoFrame.src = `https://www.youtube.com/embed/${videoIDs[index]}?rel=0&autoplay=1&mute=1&${videoParams[index]}`;
+      videoTitle.textContent = videoTitles[index];
+
+      // Atualiza os anúncios dos banners
+      updateAd("adBanner", "adLinkTop");
+      updateAd("adLeft", "adLinkLeft");
+      updateAd("adRight", "adLinkRight");
+
+      // Carrega notícias
+      loadNews();
+
+      // Conteúdo único randomizado
+      const uniqueContent = document.getElementById("uniqueContent");
+      uniqueContent.textContent = generateRandomString(500);
+    });
+  </script>
+</body>
+</html>

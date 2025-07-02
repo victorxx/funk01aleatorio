@@ -217,6 +217,19 @@
       <iframe id="videoFrame" allowfullscreen></iframe>
     </div>
   </main>
+  <section id="newsSection" style="
+  margin: 40px 200px;
+  color: #ff66cc;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #ff00cc;
+  font-family: Arial, sans-serif;
+">
+  <h2 style="color: #ff00cc; margin-bottom: 20px; text-shadow: 0 0 6px #ff00cc;">Últimas Notícias</h2>
+  <ul id="newsList" style="list-style: none; padding-left: 0;"></ul>
+</section>
+
 
   <footer>
     &copy; Funk News Brasil - Todos os direitos reservados.
@@ -317,5 +330,60 @@
   });
 </script>
 <!--------------RANDOMICO-->
+
+
+
+
+
+
+<!-----------------adicionandonoticiasna pagina-->
+<script>
+  const newsData = [
+  {
+    title: "MC Kevin o Chris lança novo hit!",
+    date: "01/07/2025",
+    link: "https://funkbrasil.com/noticia1"
+  },
+  {
+    title: "Baile funk com segurança reforçada no Rio de Janeiro",
+    date: "30/06/2025",
+    link: "https://funkbrasil.com/noticia2"
+  },
+  {
+    title: "Cresce a popularidade do funk nas plataformas digitais",
+    date: "28/06/2025",
+    link: "https://funkbrasil.com/noticia3"
+  }
+];
+
+function loadNews() {
+  const newsList = document.getElementById("newsList");
+  newsList.innerHTML = ""; // limpa antes de popular
+
+  newsData.forEach(news => {
+    const li = document.createElement("li");
+    li.style.marginBottom = "15px";
+    
+    const a = document.createElement("a");
+    a.href = news.link;
+    a.target = "_blank";
+    a.style.color = "#ff66cc";
+    a.style.textDecoration = "none";
+    a.textContent = `${news.title} (${news.date})`;
+    
+    a.addEventListener("mouseover", () => a.style.textDecoration = "underline");
+    a.addEventListener("mouseout", () => a.style.textDecoration = "none");
+
+    li.appendChild(a);
+    newsList.appendChild(li);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadNews();
+});
+
+</script>
+<!-----------------adicionandonoticiasna pagina-->
 </body>
 </html>
